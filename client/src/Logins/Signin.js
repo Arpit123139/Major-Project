@@ -50,7 +50,7 @@ const Signin = () => {
         storeTokenInLS(response.data.token);
         alert("Signin successful!");
         console.log("data added");
-        history(`/uhome/${response.data.token}`);
+        history(`/homepage`);
       } else {
         console.error("-Error:", response.statusText);
         alert("Signin failed. Please check your credentials.");

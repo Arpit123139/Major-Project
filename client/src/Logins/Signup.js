@@ -40,7 +40,7 @@ const Signup = () => {
       if (response.status === 200) { // Assuming 201 (Created) for successful signup
         alert(`Registered successfully as ${formData.type}!`);
         storeTokenInLS(response.data.token);
-        navigate('/'); // Use appropriate redirect logic
+        navigate('/homepage'); // Use appropriate redirect logic
       } else {
         // Handle other status codes appropriately
         // Consider using more granular error handling
