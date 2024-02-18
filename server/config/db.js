@@ -1,9 +1,9 @@
 const mongoose=require('mongoose')
 mongoose.set('strictQuery',false)                 // Withouth querying as well it will remain connected
 
-
+process.env.DB_URL
 const connectWithDb1 =()=>{
-    mongoose.connect("mongodb+srv://danishmahajan779:Danish@cluster0.cntndvq.mongodb.net/MajorProject?retryWrites=true&w=majority",{
+    mongoose.connect(process.env.DB_URL,{
         useNewUrlParser:true,
         useUnifiedTopology:true
     })
