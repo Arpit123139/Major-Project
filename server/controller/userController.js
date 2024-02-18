@@ -15,7 +15,7 @@ exports.signup=BigPromise(async(req,res,next)=>{
     // if(!req.files){
     //     return next(new CustomError("Plz upload the profile image of the user",400))
     // }
-
+    console.log(req.body);
     const {name,email,password,role}=req.body
 
     if(!email || !name || !password){
@@ -46,7 +46,6 @@ exports.signup=BigPromise(async(req,res,next)=>{
     })
 
     //method to generte a cookie with the token generated with the expiry date ...........................
-
    res.status('200').json({
         name,
         email,

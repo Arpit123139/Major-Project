@@ -3,7 +3,7 @@ mongoose.set('strictQuery',false)                 // Withouth querying as well i
 
 
 const connectWithDb1 =()=>{
-    mongoose.connect(process.env.DB_URL,{
+    mongoose.connect("mongodb+srv://danishmahajan779:Danish@cluster0.cntndvq.mongodb.net/MajorProject?retryWrites=true&w=majority",{
         useNewUrlParser:true,
         useUnifiedTopology:true
     })

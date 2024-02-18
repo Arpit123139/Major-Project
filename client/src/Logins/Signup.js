@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // For HTTP requests
 // import { Helmet } from 'react-helmet'; // For adding custom styles
+import { useAuth } from '../Auth/Auth';
 
 
 const Signup = () => {
@@ -14,7 +15,7 @@ const Signup = () => {
     type: 'student', // Default selection
   });
   
-  
+  const storeTokenInLS = useAuth();
 
   const handleFormChange = (event) => {
     console.log(event.target.value)
@@ -31,12 +32,14 @@ const Signup = () => {
 
     try {
         console.log(formData)
-      const response = await axios.post('/api/user/signup', {
-        ...formData,
+        const { name,email, password, type } = formData;
+      const response = await axios.post('/api/v1/signup', {
+        name,email, password, type
       });
-
-      if (response.status === 201) { // Assuming 201 (Created) for successful signup
+      console.log(response);
+      if (response.status === 200) { // Assuming 201 (Created) for successful signup
         alert(`Registered successfully as ${formData.type}!`);
+        storeTokenInLS(response.data.token);
         navigate('/'); // Use appropriate redirect logic
       } else {
         // Handle other status codes appropriately
