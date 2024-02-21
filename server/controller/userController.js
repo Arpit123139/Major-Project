@@ -89,4 +89,22 @@ exports.editImage=BigPromise(async(req,res)=>{
         console.log(error);
     }
 })
+exports.editStudentProfile=BigPromise(async(req,res)=>{
+    try{
+    const token=req.params.token;
+    const decode=jwt.verify(token,process.env.JWT_SECRET)
+    // console.log(decode) 
+    const user=await User.findByIdAndUpdate(decode.id,req.body,{
+        new:true
+    });
+    console.log(user);
+    res.status(200).json({
+        
+    })
+    }
+    catch(error)
+    {
+        console.log(error);
+    }
+})
 

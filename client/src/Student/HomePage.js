@@ -64,7 +64,7 @@ const HomePage = () => {
                                             </td>
                                             <td>
                                                 <div className="add_btn" align="center">
-                                                    <NavLink to={`/enterudata/${token}`}> <button className="btn btn-primary" >edit</button></NavLink>
+                                                    <NavLink to={`/editStudentProfile`}> <button className="btn btn-primary" >edit</button></NavLink>
                                                 </div>
                                             </td>
                                             <td>
