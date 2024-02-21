@@ -7,14 +7,14 @@ import { useAuth } from '../Auth/Auth';
 
 const Signup = () => {
   const navigate = useNavigate();
-
+  const [image, setImage] = useState("");
+  const [url, setUrl] = useState("");
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
-    type: 'student', // Default selection
   });
-  
+
   const storeTokenInLS = useAuth();
 
   const handleFormChange = (event) => {
@@ -23,18 +23,30 @@ const Signup = () => {
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleUserTypeChange = (event) => {
-    setFormData((prevData) => ({ ...prevData, type: event.target.value }));
-  };
+  // const handleUserTypeChange = (event) => {
+  //   setFormData((prevData) => ({ ...prevData, type: event.target.value }));
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const formdata = new FormData()
+        formdata.append("file", image)
+        formdata.append("upload_preset", "testing")
+        formdata.append("cloud_name", "dpywvy2za")
+        const res1=await fetch('https://api.cloudinary.com/v1_1/dpywvy2za/image/upload',{
+          method:"post",
+          body:formdata
+        })
+        const ImgData=await res1.json()
+        const url1=ImgData.url
+        setUrl(url1);
+        console.log(url1)
 
     try {
-        console.log(formData)
-        const { name,email, password, type } = formData;
+      console.log(formData)
+      const { name, email, password } = formData;
       const response = await axios.post('/api/v1/signup', {
-        name,email, password, type
+        name, email, password, url1
       });
       console.log(response);
       if (response.status === 200) { // Assuming 201 (Created) for successful signup
@@ -95,13 +107,16 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="input-group">
+        {/* <div className="input-group">
           <label htmlFor="type">User Type</label>
           <select id="type" name="type" value={formData.type} onChange={handleUserTypeChange}>
             <option value="student">Student</option>
             <option value="teacher">Admin</option>
-            {/* Add more options as needed */}
           </select>
+        </div> */}
+        <div className="input-group">
+          <label htmlFor="url" >pic</label>
+          <input type="file" onChange={(e) => setImage(e.target.files[0])}></input>
         </div>
         <button type="submit" className="btn-submit">
           Sign Up

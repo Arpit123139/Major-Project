@@ -15,9 +15,7 @@ exports.signup=BigPromise(async(req,res,next)=>{
     // if(!req.files){
     //     return next(new CustomError("Plz upload the profile image of the user",400))
     // }
-    console.log(req.body);
-    const {name,email,password,role}=req.body
-
+    const {name,email,password,url}=req.body
     if(!email || !name || !password){
         // return next(new CustomError('Plz Send Email',400))
         return next(new Error("Name ,email and password are required"))
@@ -42,9 +40,9 @@ exports.signup=BigPromise(async(req,res,next)=>{
         name,
         email,
         password,
-        role
+        url:req.body.url1
     })
-
+    console.log(user)
     //method to generte a cookie with the token generated with the expiry date ...........................
    res.status('200').json({
         name,

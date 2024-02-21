@@ -3,6 +3,7 @@ const validator=require('validator')
 const bcrypt=require('bcryptjs')
 const jwt=require('jsonwebtoken')
 const crypto=require('crypto')
+const { url } = require('inspector')
 const userSchema=new mongoose.Schema({
     name:{
         type:String,
@@ -20,9 +21,8 @@ const userSchema=new mongoose.Schema({
         required:[true,'Please Provide a password'],               
         select:false                                            // the password field not comes in with the UserSchema
     },
-    role:{
-        type:String,
-        default:'user'                                           
+    url:{
+        type:String
     },
     createdAt:{
         type:Date,

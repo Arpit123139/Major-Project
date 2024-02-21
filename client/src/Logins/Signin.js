@@ -8,8 +8,7 @@ const Signin = () => {
 
   const [inpval, setINP] = useState({
     email: "",
-    password: "",
-    type: "student"
+    password: ""
   });
 
   const storeTokenInLS = useAuth();
@@ -24,19 +23,18 @@ const Signin = () => {
       }
     });
   }
-  const handleUserTypeChange = (event) => {
-    setINP((prevData) => ({ ...prevData, type: event.target.value }));
-  };
+  // const handleUserTypeChange = (event) => {
+  //   setINP((prevData) => ({ ...prevData, type: event.target.value }));
+  // };
 
   const addinpdata = async (e) => {
     e.preventDefault();
     console.log(inpval)
-    const { email, password, type } = inpval;
+    const { email, password } = inpval;
     try {
       const response = await axios.post('/api/user/signin', {
         email,
         password,
-        type
       })
       if (response.status === 200) {
   // ------------ get the token from the local storage  
@@ -78,14 +76,14 @@ const Signin = () => {
             <input type="password" value={inpval.password} onChange={setdata} name="password" required="" />
             <label>Password</label>
           </div>
-          <div className="input-group">
+          {/* <div className="input-group">
             <label htmlFor="type">User Type</label>
             <select id="type" name="type" value={inpval.type} onChange={handleUserTypeChange}>
               <option value="student">Student</option>
               <option value="teacher">Admin</option>
-              {/* Add more options as needed */}
+              
             </select>
-          </div>
+          </div> */}
           <button class="btn-sub" type="submit" onClick={addinpdata}>
             Submit
           </button>
