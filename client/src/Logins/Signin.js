@@ -32,7 +32,7 @@ const Signin = () => {
     console.log(inpval)
     const { email, password } = inpval;
     try {
-      const response = await axios.post('/api/user/signin', {
+      const response = await axios.post('/api/v1/signin', {
         email,
         password,
       })
