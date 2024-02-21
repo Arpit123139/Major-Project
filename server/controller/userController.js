@@ -56,4 +56,37 @@ exports.signin=BigPromise(async (req,res)=>{
     })
     
 })
+exports.studentProfile=BigPromise(async(req,res)=>{
+    
+    const token=req.params.token;
+    const decode=jwt.verify(token,process.env.JWT_SECRET)
+    // console.log(decode) 
+    
+    const user=await User.findById(decode.id);
+    
+    res.status(200).json({
+        user
+    })
+})
+exports.editImage=BigPromise(async(req,res)=>{
+    try{
+    const token=req.params.token;
+    const decode=jwt.verify(token,process.env.JWT_SECRET)
+    const id=decode.id
+    console.log(decode) 
+    const user=await User.findByIdAndUpdate(id,
+        {
+          url:req.body.url
+        });
+    console.log(user);
+    console.log("--------------");
+    res.status(200).json({
+        
+    })
+    }
+    catch(error)
+    {
+        console.log(error);
+    }
+})
 
