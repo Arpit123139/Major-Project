@@ -13,7 +13,8 @@ const EditStudentProfile = () => {
         name: "",
         email: "",
         collegeid:"",
-        phone:""
+        phone:"",
+        semester:""
     })
     
     const setdata = (e) => {
@@ -61,10 +62,10 @@ const EditStudentProfile = () => {
     }, []);
 
 
-    const updatedisease = async(e)=>{
+    const updateProfile = async(e)=>{
         e.preventDefault();
         
-        const {name,email,collegeid,phone} = inpval;
+        const {name,email,collegeid,phone,semester} = inpval;
         
         const res2 = await fetch(`/api/v1/editStudentProfile/${token}`,{
             method: "PATCH",
@@ -72,7 +73,7 @@ const EditStudentProfile = () => {
                 "Content-Type": "application/json"
             },
             body:JSON.stringify({
-                name,email,collegeid,phone
+                name,email,collegeid,phone,semester
             })
         });
 
@@ -106,10 +107,14 @@ const EditStudentProfile = () => {
                         <input type="text" value={inpval.collegeid} onChange={setdata} name="collegeid" class="form-control" id="exampleInputPassword1" />
                     </div>
                     <div class="mb-3 col-lg-6 col-md-6 col-12">
-                        <label for="exampleInputPassword1" class="form-label">email</label>
+                        <label for="exampleInputPassword1" class="form-label">Phone</label>
                         <input type="text" value={inpval.phone} onChange={setdata} name="phone" class="form-control" id="exampleInputPassword1" />
                     </div>
-                    <button type="submit" onClick={updatedisease} class="btn btn-primary">Submit</button>
+                    <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="exampleInputPassword1" class="form-label">semester</label>
+                        <input type="text" value={inpval.semester} onChange={setdata} name="semester" class="form-control" id="exampleInputPassword1" />
+                    </div>
+                    <button type="submit" onClick={updateProfile} class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>

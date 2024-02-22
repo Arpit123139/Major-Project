@@ -88,6 +88,9 @@ const HomePage = () => {
                                             <td>
                                                 <h3 className="mt-3"> collegeid: <span >{getuserdata.collegeid}</span></h3>
                                             </td>
+                                            <td>
+                                                <h3 className="mt-3"> semester: <span >{getuserdata.semester}</span></h3>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>

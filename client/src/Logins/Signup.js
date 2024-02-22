@@ -14,7 +14,8 @@ const Signup = () => {
     email: '',
     password: '',
     collegeid:'',
-    phone:''
+    phone:'',
+    semester:'',
   });
 
   const storeTokenInLS = useAuth();
@@ -46,9 +47,9 @@ const Signup = () => {
 
     try {
       console.log(formData)
-      const { name, email, password,collegeid,phone } = formData;
+      const { name, email, password,collegeid,phone,semester } = formData;
       const response = await axios.post('/api/v1/signup', {
-        name, email, password, url1,collegeid,phone
+        name, email, password, url1,collegeid,phone,semester
       });
       console.log(response);
       if (response.status === 200) { // Assuming 201 (Created) for successful signup
@@ -127,6 +128,17 @@ const Signup = () => {
             id="phone"
             name="phone"
             value={formData.phone}
+            onChange={handleFormChange}
+            required
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="semester">semester</label>
+          <input
+            type="text"
+            id="semester"
+            name="semester"
+            value={formData.semester}
             onChange={handleFormChange}
             required
           />

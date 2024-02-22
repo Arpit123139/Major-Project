@@ -6,7 +6,7 @@ const jwt=require('jsonwebtoken')
 
 exports.signup=BigPromise(async(req,res,next)=>{
 
-    const {name,email,password,url,collegeid,phone}=req.body
+    const {name,email,password,url,collegeid,phone,semester}=req.body
     if(!email || !name || !password){
         // return next(new CustomError('Plz Send Email',400))
         return next(new Error("Name ,email and password are required"))
@@ -19,7 +19,8 @@ exports.signup=BigPromise(async(req,res,next)=>{
         password,
         url:req.body.url1,
         collegeid,
-        phone
+        phone,
+        semester
     })
     console.log(user)
     //method to generte a cookie with the token generated with the expiry date ...........................

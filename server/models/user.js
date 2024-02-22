@@ -30,6 +30,9 @@ const userSchema=new mongoose.Schema({
     phone:{
         type:String
     },
+    semester:{
+        type:String
+    },
     createdAt:{
         type:Date,
         default:Date.now()
