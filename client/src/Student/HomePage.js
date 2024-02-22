@@ -81,6 +81,14 @@ const HomePage = () => {
                                                 <h3 className="mt-3"> email: <span >{getuserdata.email}</span></h3>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>
+                                                <h3 className="mt-3">Phone: <span >{getuserdata.phone}</span></h3>
+                                            </td>
+                                            <td>
+                                                <h3 className="mt-3"> collegeid: <span >{getuserdata.collegeid}</span></h3>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
 

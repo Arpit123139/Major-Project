@@ -24,6 +24,12 @@ const userSchema=new mongoose.Schema({
     url:{
         type:String
     },
+    collegeid:{
+        type:String
+    },
+    phone:{
+        type:String
+    },
     createdAt:{
         type:Date,
         default:Date.now()

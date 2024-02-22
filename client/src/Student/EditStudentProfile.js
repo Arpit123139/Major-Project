@@ -11,7 +11,9 @@ const EditStudentProfile = () => {
     const navigate = useNavigate();
     const [inpval, setINP] = useState({
         name: "",
-        email: ""
+        email: "",
+        collegeid:"",
+        phone:""
     })
     
     const setdata = (e) => {
@@ -62,7 +64,7 @@ const EditStudentProfile = () => {
     const updatedisease = async(e)=>{
         e.preventDefault();
         
-        const {name,email} = inpval;
+        const {name,email,collegeid,phone} = inpval;
         
         const res2 = await fetch(`/api/v1/editStudentProfile/${token}`,{
             method: "PATCH",
@@ -70,7 +72,7 @@ const EditStudentProfile = () => {
                 "Content-Type": "application/json"
             },
             body:JSON.stringify({
-                name,email
+                name,email,collegeid,phone
             })
         });
 
@@ -98,6 +100,14 @@ const EditStudentProfile = () => {
                     <div class="mb-3 col-lg-6 col-md-6 col-12">
                         <label for="exampleInputPassword1" class="form-label">email</label>
                         <input type="email" value={inpval.email} onChange={setdata} name="email" class="form-control" id="exampleInputPassword1" />
+                    </div>
+                    <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="exampleInputPassword1" class="form-label">collegeid</label>
+                        <input type="text" value={inpval.collegeid} onChange={setdata} name="collegeid" class="form-control" id="exampleInputPassword1" />
+                    </div>
+                    <div class="mb-3 col-lg-6 col-md-6 col-12">
+                        <label for="exampleInputPassword1" class="form-label">email</label>
+                        <input type="text" value={inpval.phone} onChange={setdata} name="phone" class="form-control" id="exampleInputPassword1" />
                     </div>
                     <button type="submit" onClick={updatedisease} class="btn btn-primary">Submit</button>
                 </div>

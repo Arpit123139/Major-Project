@@ -13,6 +13,8 @@ const Signup = () => {
     name: '',
     email: '',
     password: '',
+    collegeid:'',
+    phone:''
   });
 
   const storeTokenInLS = useAuth();
@@ -44,9 +46,9 @@ const Signup = () => {
 
     try {
       console.log(formData)
-      const { name, email, password } = formData;
+      const { name, email, password,collegeid,phone } = formData;
       const response = await axios.post('/api/v1/signup', {
-        name, email, password, url1
+        name, email, password, url1,collegeid,phone
       });
       console.log(response);
       if (response.status === 200) { // Assuming 201 (Created) for successful signup
@@ -107,13 +109,28 @@ const Signup = () => {
             required
           />
         </div>
-        {/* <div className="input-group">
-          <label htmlFor="type">User Type</label>
-          <select id="type" name="type" value={formData.type} onChange={handleUserTypeChange}>
-            <option value="student">Student</option>
-            <option value="teacher">Admin</option>
-          </select>
-        </div> */}
+        <div className="input-group">
+          <label htmlFor="collegeid">collegeid</label>
+          <input
+            type="text"
+            id="collegeid"
+            name="collegeid"
+            value={formData.collegeid}
+            onChange={handleFormChange}
+            required
+          />
+        </div>
+        <div className="input-group">
+          <label htmlFor="phone">Phone</label>
+          <input
+            type="text"
+            id="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleFormChange}
+            required
+          />
+        </div>
         <div className="input-group">
           <label htmlFor="url" >pic</label>
           <input type="file" onChange={(e) => setImage(e.target.files[0])}></input>

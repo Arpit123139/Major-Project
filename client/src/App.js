@@ -5,10 +5,12 @@ import Signin from './Logins/Signin';
 import HomePage from './Student/HomePage';
 import EditImage from './Student/EditProfilePic';
 import EditStudentProfile from './Student/EditStudentProfile';
+import Landing from './Logins/LandingPage';
 function App() {
   return (
     <div>
       <Routes>
+      <Route path="/" element= {<Landing />} />
         <Route path="/signup" element= {<Signup />} />
         <Route path="/signin" element= {<Signin />} />
         <Route path="/homepage" element= {<HomePage />} />
