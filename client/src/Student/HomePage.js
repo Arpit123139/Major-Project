@@ -29,7 +29,7 @@ const HomePage = () => {
         if (res.status === 404) {
             console.error("404 Error: Resource not found");
             // Handle the error appropriately, e.g., display an error message to the user
-         }
+        }
 
         if (res.status === 422 || !data) {
             console.log("error ");
@@ -51,53 +51,89 @@ const HomePage = () => {
     return (
         <>
             <div className="container mt-3">
-                        <div className="row">
-                            <div className="left_view col-lg-6 col-md-6 col-12">
+                <div className="row">
+                    <div className="left_view col-lg-6 col-md-6 col-12">
 
 
 
-                                <table class="table table-bordered table-hover" >
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <img src={getuserdata.url} style={{ width: 250, height: 175 }} alt="profile" />
-                                            </td>
-                                            <td>
+                        <table class="table table-bordered table-hover" >
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <img src={getuserdata.url} style={{ width: 250, height: 175 }} alt="profile" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {getuserdata.status === "Pending" ? (
+                                            <>
                                                 <div className="add_btn" align="center">
-                                                    <NavLink to={`/editStudentProfile`}> <button className="btn btn-primary" >edit</button></NavLink>
+                                                    <NavLink to={`/applyHostel`}> <button className="btn btn-primary" >Change hostel</button></NavLink>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <div className="add_btn" align="center">
-                                                    <NavLink to={`/editImage`}> <button className="btn btn-primary" >change image</button></NavLink>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 className="mt-3">Name: <span >{getuserdata.name}</span></h3>
-                                            </td>
-                                            <td>
-                                                <h3 className="mt-3"> email: <span >{getuserdata.email}</span></h3>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <h3 className="mt-3">Phone: <span >{getuserdata.phone}</span></h3>
-                                            </td>
-                                            <td>
-                                                <h3 className="mt-3"> collegeid: <span >{getuserdata.collegeid}</span></h3>
-                                            </td>
-                                            <td>
-                                                <h3 className="mt-3"> semester: <span >{getuserdata.semester}</span></h3>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                            </>
+                                        ) : (
+                                            <div className="add_btn" align="center">
+                                                <NavLink to={`/applyHostel`}> <button className="btn btn-primary" >Apply for hostel</button></NavLink>
+                                            </div>
+                                        )}
+                                    </td>
+                                    <td>
+                                        <div className="add_btn" align="center">
+                                            <NavLink to={`/editStudentProfile`}> <button className="btn btn-primary" >edit</button></NavLink>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div className="add_btn" align="center">
+                                            <NavLink to={`/editImage`}> <button className="btn btn-primary" >change image</button></NavLink>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h3 className="mt-3">Name: <span >{getuserdata.name}</span></h3>
+                                    </td>
+                                    <td>
+                                        <h3 className="mt-3"> email: <span >{getuserdata.email}</span></h3>
+                                    </td>
+                                    <td>
+                                        <h3 className="mt-3">Status: <span >{getuserdata.status}</span></h3>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h3 className="mt-3">Phone: <span >{getuserdata.phone}</span></h3>
+                                    </td>
+                                    <td>
+                                        <h3 className="mt-3"> collegeid: <span >{getuserdata.collegeid}</span></h3>
+                                    </td>
+                                    <td>
+                                        <h3 className="mt-3"> semester: <span >{getuserdata.semester}</span></h3>
+                                    </td>
+                                </tr>
+                                <tr>
 
-                            </div>
+                                    {getuserdata.status === "Pending" ? (
+                                        <>
+                                            <td>
+                                                <h3 className="mt-3">Hosel: <span >{getuserdata.hostelName}</span></h3>
+                                            </td>
+                                            <td>
+                                                <h3 className="mt-3"> Block: <span >{getuserdata.block}</span></h3>
+                                            </td>
+                                            <td>
+                                                <h3 className="mt-3"> Room No: <span >{getuserdata.roomNo}</span></h3>
+                                            </td>
+                                        </>
+                                    ) : (
+                                        <p className="message">Your application is being processed. Please wait for further updates.</p>
+                                    )}
+                                </tr>
+                            </tbody>
+                        </table>
 
-                        </div>
+                    </div>
+
+                </div>
             </div>
         </>
     )

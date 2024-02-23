@@ -6,6 +6,7 @@ import HomePage from './Student/HomePage';
 import EditImage from './Student/EditProfilePic';
 import EditStudentProfile from './Student/EditStudentProfile';
 import Landing from './Logins/LandingPage';
+import ApplyHostel from './Student/ApplyHostel';
 function App() {
   return (
     <div>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/homepage" element= {<HomePage />} />
         <Route path="/editImage" element= {<EditImage />} />
         <Route path="/editStudentProfile" element= {<EditStudentProfile />} />
+        <Route path="/applyHostel" element={<ApplyHostel />} />
       </Routes>
     </div>
   );

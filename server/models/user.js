@@ -33,6 +33,22 @@ const userSchema=new mongoose.Schema({
     semester:{
         type:String
     },
+    status:{
+        type:String,
+        default:'inactive'                                           
+    },
+    hostelName:{
+        type:String,
+        default:'None'                                           
+    },
+    block:{
+        type:String,
+        default:'None'                                           
+    },
+    roomNo:{
+        type:String,
+        default:'None'                                           
+    },
     createdAt:{
         type:Date,
         default:Date.now()
