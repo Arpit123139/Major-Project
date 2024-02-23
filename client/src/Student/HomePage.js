@@ -110,24 +110,45 @@ const HomePage = () => {
                                         <h3 className="mt-3"> semester: <span >{getuserdata.semester}</span></h3>
                                     </td>
                                 </tr>
-                                <tr>
+                                <>
 
                                     {getuserdata.status === "Pending" ? (
                                         <>
-                                            <td>
-                                                <h3 className="mt-3">Hosel: <span >{getuserdata.hostelName}</span></h3>
-                                            </td>
-                                            <td>
-                                                <h3 className="mt-3"> Block: <span >{getuserdata.block}</span></h3>
-                                            </td>
-                                            <td>
-                                                <h3 className="mt-3"> Room No: <span >{getuserdata.roomNo}</span></h3>
-                                            </td>
-                                        </>
-                                    ) : (
+                                        <tr>
                                         <p className="message">Your application is being processed. Please wait for further updates.</p>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h3 className="mt-3">Hostel Requested: <span>{getuserdata.hostelName}</span></h3>
+                                            </td>
+                                            <td>
+                                                <h3 className="mt-3">Block Requested: <span>{getuserdata.block}</span></h3>
+                                            </td>
+                                            <td>
+                                                <h3 className="mt-3">Room No Requested: <span>{getuserdata.roomNo}</span></h3>
+                                            </td>
+                                        </tr>
+                                        </>
+                                    ) : getuserdata.status === "Active" ? (
+                                        <tr>
+                                            <td>
+                                                <h3 className="mt-3">Hostel: <span>{getuserdata.hostelName}</span></h3>
+                                            </td>
+                                            <td>
+                                                <h3 className="mt-3">Block: <span>{getuserdata.block}</span></h3>
+                                            </td>
+                                            <td>
+                                                <h3 className="mt-3">Room No: <span>{getuserdata.roomNo}</span></h3>
+                                            </td>
+                                        </tr>
+                                    ) : (
+                                        <tr>
+                                            <p className="message">Apply for Hostel</p>
+
+                                        </tr>
+
                                     )}
-                                </tr>
+                                </>
                             </tbody>
                         </table>
 
