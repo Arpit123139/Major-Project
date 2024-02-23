@@ -7,6 +7,7 @@ import EditImage from './Student/EditProfilePic';
 import EditStudentProfile from './Student/EditStudentProfile';
 import Landing from './Logins/LandingPage';
 import ApplyHostel from './Student/ApplyHostel';
+import FeedbackPage from './Student/FeedBackForm';
 function App() {
   return (
     <div>
@@ -18,6 +19,7 @@ function App() {
         <Route path="/editImage" element= {<EditImage />} />
         <Route path="/editStudentProfile" element= {<EditStudentProfile />} />
         <Route path="/applyHostel" element={<ApplyHostel />} />
+        <Route path="/feedback" element={<FeedbackPage />} />
       </Routes>
     </div>
   );
