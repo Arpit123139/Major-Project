@@ -9,6 +9,7 @@ import Landing from './Logins/LandingPage';
 import ApplyHostel from './Student/ApplyHostel';
 import FeedbackPage from './Student/FeedBackForm';
 import Roomcomplaint from './Student/Roomcomplaint';
+import LeaveApplication from './Student/LeaveApplication';
 function App() {
   return (
     <div>
@@ -22,6 +23,7 @@ function App() {
         <Route path="/applyHostel" element={<ApplyHostel />} />
         <Route path="/feedback" element={<FeedbackPage />} />
         <Route path="/roomcomplaint" element={<Roomcomplaint />} />
+        <Route path="/leaveapplication" element={<LeaveApplication />} />
       </Routes>
     </div>
   );
