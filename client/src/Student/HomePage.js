@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { NavLink } from 'react-router-dom'
-
+const axios = require('axios')
 const HomePage = () => {
 
 
@@ -16,7 +16,6 @@ const HomePage = () => {
 
     console.log(token)
     const getdata = async () => {
-
         const res = await fetch(`/api/v1/studentProfile/${token}`, {
             method: "GET",
             headers: {

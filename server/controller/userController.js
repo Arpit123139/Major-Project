@@ -24,7 +24,7 @@ exports.signup=BigPromise(async(req,res,next)=>{
     })
     console.log(user)
     //method to generte a cookie with the token generated with the expiry date ...........................
-   res.status('200').json({
+   res.status(200).json({
         name,
         email,
         token:user.getJwtToken()

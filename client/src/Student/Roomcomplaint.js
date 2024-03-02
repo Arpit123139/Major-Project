@@ -26,7 +26,7 @@ const Roomcomplaint = () => {
     const leftHalfStyle = {
         ...halfStyle,
         backgroundColor: '#f2f2f2', // Optional: Add background color for the left half
-        
+
     };
 
     const rightHalfStyle = {
@@ -43,14 +43,20 @@ const Roomcomplaint = () => {
     const submitFeedback = async () => {
         const token = localStorage.getItem('token');
         console.log(review)
-        const response = await fetch(`/api/v1/roomcomplaint/${token}`, {
+        const response = await fetch(`/api/v1/addcomplain/${token}`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                roomissues: review,
+                description: review,
             }),
+        });
+        const res = await fetch(`/api/v1/getcomplain/${token}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
         });
 
         const data = await response.json();

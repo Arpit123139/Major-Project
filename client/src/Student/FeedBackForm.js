@@ -62,16 +62,22 @@ function FeedbackPage() {
     const token = localStorage.getItem('token');
     console.log(value)
     console.log(review)
-    const response = await fetch(`/api/v1/submitFeedback/${token}`, {
+    const response = await fetch(`/api/v1/addfeedback/${token}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         rating: value,
-        feedback: review,
+        review: review,
       }),
     });
+  //   const res = await fetch(`/api/v1/getfeedback/${token}`, {
+  //     method: "GET",
+  //     headers: {
+  //         "Content-Type": "application/json"
+  //     }
+  // });
 
     const data = await response.json();
 

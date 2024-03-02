@@ -5,15 +5,17 @@ require('dotenv').config()
 // const cookieParser=require('cookie-parser')
 // const fileUpload=require('express-fileupload')
 
-
-const user=require('./Routes/user')
-
 //reguglar miidelware
 app.use(express.json())                             // To handle the json
 app.use(express.urlencoded({extended:true}))        //to handle something comming in the body
 
+const user=require('./Routes/user')
+const feedback=require('./Routes/feedback')
+const complaint=require('./Routes/complaint')
 //test route
 app.use("/api/v1",user)
+app.use("/api/v1",feedback)
+app.use("/api/v1",complaint)
 
 app.get('/test',(req,res)=>{
     res.send("SUCCESS")
