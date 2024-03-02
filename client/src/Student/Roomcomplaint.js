@@ -43,21 +43,23 @@ const Roomcomplaint = () => {
     const submitFeedback = async () => {
         const token = localStorage.getItem('token');
         console.log(review)
-        const response = await fetch(`/api/v1/addcomplain/${token}`, {
+        const response = await fetch(`/api/v1/addcomplain`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify({
                 description: review,
             }),
         });
-        const res = await fetch(`/api/v1/getcomplain/${token}`, {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        });
+        // const res = await fetch(`/api/v1/getcomplain/`, {
+        //     method: "GET",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         "Authorization": `Bearer ${token}`
+        //     }
+        // });
 
         const data = await response.json();
 

@@ -62,20 +62,22 @@ function FeedbackPage() {
     const token = localStorage.getItem('token');
     console.log(value)
     console.log(review)
-    const response = await fetch(`/api/v1/addfeedback/${token}`, {
+    const response = await fetch(`/api/v1/addfeedback`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify({
         rating: value,
         review: review,
       }),
     });
-  //   const res = await fetch(`/api/v1/getfeedback/${token}`, {
+  //   const res = await fetch(`/api/v1/getfeedback`, {
   //     method: "GET",
   //     headers: {
-  //         "Content-Type": "application/json"
+  //         "Content-Type": "application/json",
+  //         "Authorization": `Bearer ${token}`
   //     }
   // });
 
