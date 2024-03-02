@@ -10,6 +10,9 @@ import ApplyHostel from './Student/ApplyHostel';
 import FeedbackPage from './Student/FeedBackForm';
 import Roomcomplaint from './Student/Roomcomplaint';
 import LeaveApplication from './Student/LeaveApplication';
+import PrintLeaveData from './Student/PrintLeaveApplications';
+import PrintFeedBackData from './Student/PrintFeedBackData';
+import PrintRoomComplaints from './Student/PrintRoomComplaint';
 function App() {
   return (
     <div>
@@ -24,6 +27,9 @@ function App() {
         <Route path="/feedback" element={<FeedbackPage />} />
         <Route path="/roomcomplaint" element={<Roomcomplaint />} />
         <Route path="/leaveapplication" element={<LeaveApplication />} />
+        <Route path="/printLeaveData" element={<PrintLeaveData />} />
+        <Route path="/printFeedbackData" element={<PrintFeedBackData />} />
+        <Route path="/printRoomComplaints" element={<PrintRoomComplaints />} />
       </Routes>
     </div>
   );
