@@ -33,3 +33,20 @@ exports.test=BigPromise(async(req,res,next)=>{
         SUCCESS
     })
 })
+
+exports.editfeedback=BigPromise(async(req,res,next)=>{
+
+    const id=req.params.id;
+    console.log(id)
+    const {review,rating}=req.body;
+
+    await feedback.findByIdAndUpdate(id ,{
+        review:review,
+        rating:rating
+    })
+
+    res.status("200").json({
+        message:"SUCCESSFULLY UPDATED"
+    })
+
+})

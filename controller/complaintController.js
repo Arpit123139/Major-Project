@@ -26,3 +26,19 @@ exports.getcomplaint=BigPromise(async(req,res,next)=>{
         result
     })
 })
+
+exports.editcomplaint=BigPromise(async(req,res,next)=>{
+
+    const id=req.params.id;
+    console.log(id)
+    const {description}=req.body;
+
+    await complaint.findByIdAndUpdate(id ,{
+        description:description
+    })
+
+    res.status("200").json({
+        message:"SUCCESSFULLY UPDATED"
+    })
+
+})
