@@ -5,13 +5,14 @@ import Leave2 from "../assets/img/Leave2.png";
 import Leave3 from "../assets/img/Leave3.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import {  useNavigate } from 'react-router-dom'
 
 const LeaveApplication = () => {
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [reason, setReason] = useState("");
     const images = [Leave1, Leave2, Leave3];
-
+    const navigate = useNavigate();
 
     const containerStyle = {
         display: 'flex',
@@ -63,6 +64,7 @@ const LeaveApplication = () => {
             console.log("Error submitting feedback");
         } else {
             console.log("Feedback submitted successfully:", data);
+            navigate('/homepage');
             // Optionally, you can handle success actions here
         }
     };

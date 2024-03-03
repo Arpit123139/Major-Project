@@ -7,7 +7,7 @@ const ApplyHostel = () => {
     const [formData, setFormData] = useState({
         hostelName: '',
         block: '',
-        roomNo:''
+        roomNo: ''
     });
 
     const getToken = () => {
@@ -28,15 +28,16 @@ const ApplyHostel = () => {
 
         try {
             console.log(formData)
-            const status="Pending"
-            const { hostelName, block,roomNo } = formData;
-            const response = await fetch(`/api/v1/applyHostel/${token}`, {
+            const status = "Pending"
+            const { hostelName, block, roomNo } = formData;
+            const response = await fetch(`/api/v1/applyHostel`, {
                 method: "PATCH",
                 headers: {
-                    "Content-Type": "application/json"
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    hostelName, block,status,roomNo
+                    hostelName, block, status, roomNo
                 })
             });
             console.log(response);
@@ -98,15 +99,15 @@ const ApplyHostel = () => {
                     </div>
                 )}
                 <div className="input-group">
-  <label htmlFor="roomNo">Room Number</label>
-  <input
-    id="roomNo"
-    name="roomNo"
-    type="text"
-    value={formData.roomNo}
-    onChange={(event) => setFormData((prevData) => ({ ...prevData, roomNo: event.target.value }))}
-  />
-</div>
+                    <label htmlFor="roomNo">Room Number</label>
+                    <input
+                        id="roomNo"
+                        name="roomNo"
+                        type="text"
+                        value={formData.roomNo}
+                        onChange={(event) => setFormData((prevData) => ({ ...prevData, roomNo: event.target.value }))}
+                    />
+                </div>
                 <button type="submit" className="btn-submit">
                     Apply
                 </button>

@@ -37,10 +37,11 @@ const EditStudentProfile = () => {
 
     const getdata = async () => {
 
-        const res = await fetch(`/api/v1/studentProfile/${token}`, {
+        const res = await fetch(`/api/v1/studentProfile`, {
             method: "GET",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             }
         });
 
@@ -67,10 +68,11 @@ const EditStudentProfile = () => {
         
         const {name,email,collegeid,phone,semester} = inpval;
         
-        const res2 = await fetch(`/api/v1/editStudentProfile/${token}`,{
+        const res2 = await fetch(`/api/v1/editStudentProfile`,{
             method: "PATCH",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             },
             body:JSON.stringify({
                 name,email,collegeid,phone,semester

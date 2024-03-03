@@ -8,9 +8,11 @@ import Feedback2 from '../assets/img/Feedback2.png'
 import Feedback3 from '../assets/img/Feedback3.png'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
-
+import {  useNavigate } from 'react-router-dom'
 
 function FeedbackPage() {
+
+  const navigate = useNavigate();
   const [value, setValue] = useState(0);
   const [hover, setHover] = useState(null);
   const [review, setReview] = useState("");
@@ -87,6 +89,7 @@ function FeedbackPage() {
       console.log("Error submitting feedback");
     } else {
       console.log("Feedback submitted successfully:", data);
+      navigate('/homepage');
       // Optionally, you can handle success actions here
     }
   };

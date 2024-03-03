@@ -7,8 +7,11 @@ import Room4 from "../assets/img/Room4.png";
 import Box from '@mui/material/Box';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
+import {  useNavigate } from 'react-router-dom'
 
 const Roomcomplaint = () => {
+
+    const navigate = useNavigate();
     const [review, setReview] = useState("");
     const images = [Room1, Room2, Room3, Room4];
     const containerStyle = {
@@ -67,6 +70,7 @@ const Roomcomplaint = () => {
             console.log("Error submitting feedback");
         } else {
             console.log("Feedback submitted successfully:", data);
+            navigate('/homepage');
             // Optionally, you can handle success actions here
         }
     };

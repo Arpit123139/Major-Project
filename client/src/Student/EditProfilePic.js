@@ -32,10 +32,11 @@ const EditImage = () => {
         console.log(url1) 
         //const pus=url1.toString()
         console.log("asdasjbaskjbkjasbfakjs")
-        const res2 = await fetch(`/api/v1/editImage/${token}`,{
+        const res2 = await fetch(`/api/v1/editImage`,{
             method: "PATCH",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify({
                url:url1

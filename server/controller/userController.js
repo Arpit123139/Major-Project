@@ -61,11 +61,8 @@ exports.signin=BigPromise(async (req,res)=>{
 })
 exports.studentProfile=BigPromise(async(req,res)=>{
     
-    const token=req.params.token;
-    const decode=jwt.verify(token,process.env.JWT_SECRET)
-    // console.log(decode) 
-    
-    const user=await User.findById(decode.id);
+    const id=req.user._id
+    const user=await User.findById(id);
     
     res.status(200).json({
         user
@@ -73,10 +70,7 @@ exports.studentProfile=BigPromise(async(req,res)=>{
 })
 exports.editImage=BigPromise(async(req,res)=>{
     try{
-    const token=req.params.token;
-    const decode=jwt.verify(token,process.env.JWT_SECRET)
-    const id=decode.id
-    console.log(decode) 
+    const id=req.user._id
     const user=await User.findByIdAndUpdate(id,
         {
           url:req.body.url
@@ -94,10 +88,8 @@ exports.editImage=BigPromise(async(req,res)=>{
 })
 exports.editStudentProfile=BigPromise(async(req,res)=>{
     try{
-    const token=req.params.token;
-    const decode=jwt.verify(token,process.env.JWT_SECRET)
-    // console.log(decode) 
-    const user=await User.findByIdAndUpdate(decode.id,req.body,{
+    const id=req.user._id
+    const user=await User.findByIdAndUpdate(id,req.body,{
         new:true
     });
     console.log(user);
@@ -112,10 +104,8 @@ exports.editStudentProfile=BigPromise(async(req,res)=>{
 })
 exports.applyHostel=BigPromise(async(req,res)=>{
     try{
-    const token=req.params.token;
-    const decode=jwt.verify(token,process.env.JWT_SECRET)
-    // console.log(decode) 
-    const user=await User.findByIdAndUpdate(decode.id,req.body,{
+    const id=req.user._id
+    const user=await User.findByIdAndUpdate(id,req.body,{
         new:true
     });
     console.log(user);

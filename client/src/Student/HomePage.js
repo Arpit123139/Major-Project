@@ -16,10 +16,11 @@ const HomePage = () => {
 
     console.log(token)
     const getdata = async () => {
-        const res = await fetch(`/api/v1/studentProfile/${token}`, {
+        const res = await fetch(`/api/v1/studentProfile`, {
             method: "GET",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
             }
         });
 
