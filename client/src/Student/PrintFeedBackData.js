@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 
 import { NavLink } from 'react-router-dom'
-
+import { useID } from '../Auth/Auth';
 import feedback from '../assets/img/feedback.jpg'
 import Feedback2 from '../assets/img/Feedback2.png'
 import Feedback1 from '../assets/img/Feedback1.png'
@@ -13,7 +13,7 @@ import { Carousel } from 'react-responsive-carousel';
 const PrintFeedBackData = () => {
 
     const images = [Feedback1,Feedback2, Feedback3];
-
+    const storeIdInLs = useID();
     const [feedback, setfeedback] = useState([]);
     const getToken = () => {
         return localStorage.getItem('token');
@@ -94,6 +94,7 @@ const PrintFeedBackData = () => {
                             <tr>
                                 <th>Rating</th>
                                 <th>Feedback</th>
+                                <th>Edit</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -101,6 +102,11 @@ const PrintFeedBackData = () => {
                                 <tr key={index}>
                                     <td>{feedbackEntry.rating}</td>
                                     <td>{feedbackEntry.review}</td>
+                                    <td>
+                                        <div className="add_btn" align="center">
+                                            <NavLink to={"/editStudentFeedBack"}> <button className="btn btn-primary" onClick={() => storeIdInLs(feedbackEntry._id)} >edit</button></NavLink>
+                                        </div>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>

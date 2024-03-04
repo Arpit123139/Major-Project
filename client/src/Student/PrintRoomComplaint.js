@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-
+import { useID } from '../Auth/Auth';
 import { NavLink } from 'react-router-dom'
 import Issue from "../assets/img/Issue.jpg";
 import Room1 from "../assets/img/Room1.png";
@@ -12,7 +12,7 @@ import { Carousel } from 'react-responsive-carousel';
 const PrintRoomComplaints = () => {
 
 
-
+    const storeIdInLs = useID();
     const [roomissues, setRoomIssues] = useState([]);
     const getToken = () => {
         return localStorage.getItem('token');
@@ -95,12 +95,19 @@ const PrintRoomComplaints = () => {
                         <thead>
                             <tr>
                                 <th>issues</th>
+                                <th>edit</th>
                             </tr>
                         </thead>
                         <tbody>
                             {roomissues.map((issuesEntry, index) => (
                                 <tr key={index}>
                                     <td>{issuesEntry.description}</td>
+                                    <td>
+                                        <div className="add_btn" align="center">
+                                            <NavLink to={"/editStudentComplaint"}> <button className="btn btn-primary" onClick={() => storeIdInLs(issuesEntry._id)} >edit</button></NavLink>
+                                        </div>
+                                    </td>
+                                    <td>{issuesEntry._id}</td>
                                 </tr>
                             ))}
                         </tbody>

@@ -13,6 +13,8 @@ import LeaveApplication from './Student/LeaveApplication';
 import PrintLeaveData from './Student/PrintLeaveApplications';
 import PrintFeedBackData from './Student/PrintFeedBackData';
 import PrintRoomComplaints from './Student/PrintRoomComplaint';
+import EditStudentFeedBack from './Student/EditStudentFeedBack';
+import EditStudentComplaint from './Student/EditStudentComplaint';
 function App() {
   return (
     <div>
@@ -30,6 +32,8 @@ function App() {
         <Route path="/printLeaveData" element={<PrintLeaveData />} />
         <Route path="/printFeedbackData" element={<PrintFeedBackData />} />
         <Route path="/printRoomComplaints" element={<PrintRoomComplaints />} />
+        <Route path="/editStudentFeedBack" element={<EditStudentFeedBack />} />
+        <Route path="/editStudentComplaint" element={<EditStudentComplaint />} />
       </Routes>
     </div>
   );
