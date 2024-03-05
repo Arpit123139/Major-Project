@@ -45,7 +45,7 @@ exports.editfeedback=BigPromise(async(req,res,next)=>{
 })
 exports.getsinglefeedback=BigPromise(async(req,res,next)=>{
 
-    const user=req.params.id;s
+    const user=req.params.id;
     const result=await feedback.findById(user)
     console.log("--------------------\n--------------\n")
     console.log("--------------------\n--------------\n")

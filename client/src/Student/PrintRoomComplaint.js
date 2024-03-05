@@ -107,7 +107,6 @@ const PrintRoomComplaints = () => {
                                             <NavLink to={"/editStudentComplaint"}> <button className="btn btn-primary" onClick={() => storeIdInLs(issuesEntry._id)} >edit</button></NavLink>
                                         </div>
                                     </td>
-                                    <td>{issuesEntry._id}</td>
                                 </tr>
                             ))}
                         </tbody>
