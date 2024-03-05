@@ -46,7 +46,6 @@ const EditStudentComplaint = () => {
     };
     const id=localStorage.getItem("id")
     const submitFeedback = async () => {
-        const token = localStorage.getItem('token');
         console.log(review)
         const response = await fetch(`/api/v1/updatecomplaint/${id}`, {
             method: "PUT",
