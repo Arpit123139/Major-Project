@@ -11,7 +11,6 @@ const Signup = () => {
   const navigate = useNavigate();
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
-  const [show, setShow] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -39,10 +38,10 @@ const Signup = () => {
     formdata.append("file", image)
     formdata.append("upload_preset", "testing")
     formdata.append("cloud_name", "dpywvy2za")
-        const res1=await fetch('https://api.cloudinary.com/v1_1/dpywvy2za/image/upload',{
-          method:"post",
-          body:formdata
-        })
+    const res1 = await fetch('https://api.cloudinary.com/v1_1/dpywvy2za/image/upload', {
+      method: "post",
+      body: formdata
+    })
     const ImgData = await res1.json()
     const url1 = ImgData.url
     setUrl(url1);
@@ -52,23 +51,22 @@ const Signup = () => {
       console.log(formData)
       const { name, email, password, collegeid, phone, semester } = formData;
       const response = await axios.post('/api/v1/signup', {
-        name, email, password, url1,collegeid,phone,semester
+        name, email, password, url1, collegeid, phone, semester
       });
       console.log(response);
       if (response.status === 200) { // Assuming 201 (Created) for successful signup
         alert(`Registered successfully as ${formData.type}!`);
         storeTokenInLS(response.data.token);
-        setShow(true);
         navigate('/homepage'); // Use appropriate redirect logic
       } else {
         // Handle other status codes appropriately
         // Consider using more granular error handling
         console.error('Error:', response.status, response.data);
-        setShow(false);
+        alert('Error registering. Please try again.');
       }
     } catch (error) {
       console.error('Error:', error);
-      setShow(false);
+      alert('An error occurred. Please try again.');
     }
   };
 
@@ -83,18 +81,6 @@ const Signup = () => {
       </Helmet> */}
       <form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
         <div className="h4 mb-2 text-center">Sign Up</div>
-        {show ? (
-          <Alert
-            className="mb-2"
-            variant="danger"
-            onClose={() => setShow(false)}
-            dismissible
-          >
-            Incorrect username or password.
-          </Alert>
-        ) : (
-          <div />
-        )}
         <div className="mb-1">
           <Form.Label>Username</Form.Label>
           <Form.Control
