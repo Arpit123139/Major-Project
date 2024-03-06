@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // For HTTP requests
-// import { Helmet } from 'react-helmet'; // For adding custom styles
+import { Form, Button, Alert } from "react-bootstrap";
+import BackgroundImage from '../assets/img/signin.png'
+import "./login.css";
+import axios from 'axios';
 import { useAuth } from '../Auth/Auth';
 
 
@@ -9,13 +11,14 @@ const Signup = () => {
   const navigate = useNavigate();
   const [image, setImage] = useState("");
   const [url, setUrl] = useState("");
+  const [show, setShow] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     password: '',
-    collegeid:'',
-    phone:'',
-    semester:'',
+    collegeid: '',
+    phone: '',
+    semester: '',
   });
 
   const storeTokenInLS = useAuth();
@@ -33,21 +36,21 @@ const Signup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formdata = new FormData()
-        formdata.append("file", image)
-        formdata.append("upload_preset", "testing")
-        formdata.append("cloud_name", "dpywvy2za")
+    formdata.append("file", image)
+    formdata.append("upload_preset", "testing")
+    formdata.append("cloud_name", "dpywvy2za")
         const res1=await fetch('https://api.cloudinary.com/v1_1/dpywvy2za/image/upload',{
           method:"post",
           body:formdata
         })
-        const ImgData=await res1.json()
-        const url1=ImgData.url
-        setUrl(url1);
-        console.log(url1)
+    const ImgData = await res1.json()
+    const url1 = ImgData.url
+    setUrl(url1);
+    console.log(url1)
 
     try {
       console.log(formData)
-      const { name, email, password,collegeid,phone,semester } = formData;
+      const { name, email, password, collegeid, phone, semester } = formData;
       const response = await axios.post('/api/v1/signup', {
         name, email, password, url1,collegeid,phone,semester
       });
@@ -55,31 +58,46 @@ const Signup = () => {
       if (response.status === 200) { // Assuming 201 (Created) for successful signup
         alert(`Registered successfully as ${formData.type}!`);
         storeTokenInLS(response.data.token);
+        setShow(true);
         navigate('/homepage'); // Use appropriate redirect logic
       } else {
         // Handle other status codes appropriately
         // Consider using more granular error handling
         console.error('Error:', response.status, response.data);
-        alert('Error registering. Please try again.');
+        setShow(false);
       }
     } catch (error) {
       console.error('Error:', error);
-      alert('An error occurred. Please try again.');
+      setShow(false);
     }
   };
 
   return (
-    <div className="signup-container">
+    <div className="sign-in__wrapper"
+      style={{ backgroundImage: `url(${BackgroundImage})` }}
+    >
       {/* <Helmet>
         <style>{`
           body { background: linear-gradient(#141e30, #243b55); }
         `}</style>
       </Helmet> */}
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="input-group">
-          <label htmlFor="name">Name</label>
-          <input
+      <form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
+        <div className="h4 mb-2 text-center">Sign Up</div>
+        {show ? (
+          <Alert
+            className="mb-2"
+            variant="danger"
+            onClose={() => setShow(false)}
+            dismissible
+          >
+            Incorrect username or password.
+          </Alert>
+        ) : (
+          <div />
+        )}
+        <div className="mb-1">
+          <Form.Label>Username</Form.Label>
+          <Form.Control
             type="text"
             id="name"
             name="name"
@@ -88,9 +106,9 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="input-group">
-          <label htmlFor="email">Email</label>
-          <input
+        <div className="mb-1">
+          <label htmlFor="email">Email      </label>
+          <Form.Control
             type="email"
             id="email"
             name="email"
@@ -99,9 +117,9 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="input-group">
+        <div className="mb-1">
           <label htmlFor="password">Password</label>
-          <input
+          <Form.Control
             type="password"
             id="password"
             name="password"
@@ -110,9 +128,9 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="input-group">
+        <div className="mb-1">
           <label htmlFor="collegeid">collegeid</label>
-          <input
+          <Form.Control
             type="text"
             id="collegeid"
             name="collegeid"
@@ -121,9 +139,9 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="input-group">
+        <div className="mb-1">
           <label htmlFor="phone">Phone</label>
-          <input
+          <Form.Control
             type="text"
             id="phone"
             name="phone"
@@ -132,9 +150,9 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="input-group">
+        <div className="mb-1">
           <label htmlFor="semester">semester</label>
-          <input
+          <Form.Control
             type="text"
             id="semester"
             name="semester"
@@ -143,11 +161,11 @@ const Signup = () => {
             required
           />
         </div>
-        <div className="input-group">
+        <div className="mb-1">
           <label htmlFor="url" >pic</label>
           <input type="file" onChange={(e) => setImage(e.target.files[0])}></input>
         </div>
-        <button type="submit" className="btn-submit">
+        <button type="submit" className="w-100" variant="primary" style={{ backgroundColor: 'blue', color: 'white' }}>
           Sign Up
         </button>
       </form>

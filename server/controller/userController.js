@@ -38,7 +38,7 @@ exports.signin=BigPromise(async (req,res)=>{
     console.log("password "+password)
 
     const user=await User.findOne({email:email}).select("+password") 
-
+    console.log(req.body)
     if(!user)
     {
         return res.status(401).json({

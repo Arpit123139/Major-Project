@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Import Axios
 import { useAuth } from '../Auth/Auth';
+import { Form, Button, Alert } from "react-bootstrap";
+import BackgroundImage from '../assets/img/signin.png'
+import "./login.css";
 
 const Signin = () => {
   const history = useNavigate("");
@@ -60,22 +63,23 @@ const Signin = () => {
   };
 
   return (
-    <div id="container-main">
+    <div className="sign-in__wrapper"
+    style={{ backgroundImage: `url(${BackgroundImage})` }}>
       {/* <Helmet>
         <style>{'body { background: linear-gradient(#141e30, #243b55); }'}</style>
       </Helmet> */}
       <div class="login-box">
-        <h2>Login</h2>
-        <form>
-          <div class="user-box">
-            <input type="email" value={inpval.email} onChange={setdata} name="email" required="" />
-            <label>Email</label>
+        <form className="shadow p-4 bg-white rounded">
+        <div className="h4 mb-2 text-center">Sign In</div>
+          <div className="mb-1">
+          <Form.Label>Email</Form.Label>
+          <Form.Control type="email" value={inpval.email} onChange={setdata} name="email" required="" />
+          </div>
+          <div className="mb-1">
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" value={inpval.password} onChange={setdata} name="password" required="" />
           </div>
           <br />
-          <div class="user-box">
-            <input type="password" value={inpval.password} onChange={setdata} name="password" required="" />
-            <label>Password</label>
-          </div>
           {/* <div className="input-group">
             <label htmlFor="type">User Type</label>
             <select id="type" name="type" value={inpval.type} onChange={handleUserTypeChange}>
@@ -84,7 +88,7 @@ const Signin = () => {
               
             </select>
           </div> */}
-          <button class="btn-sub" type="submit" onClick={addinpdata}>
+          <button className="w-100 mb-2" type="submit" onClick={addinpdata}>
             Submit
           </button>
         </form>
