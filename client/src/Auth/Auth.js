@@ -2,6 +2,7 @@ import { createContext, useContext } from "react";
 
 export const AuthContext = createContext();
 export const IdContext= createContext();
+export const StatusContext= createContext();
 export const AuthProvider = ({children}) =>{
 
     const storeTokenInLs= (serverToken) => {
@@ -38,6 +39,27 @@ export const IdProvider = ({children}) =>{
 
 export const useID = () => {
     const authContextValue= useContext(IdContext);
+    if(!authContextValue)
+    {
+        throw new Error("useAuth used outside of the provider");
+    }
+    return authContextValue
+};
+export const StatusProvider = ({children}) =>{
+
+    const storeTokenInLs= (serverToken) => {
+        return localStorage.setItem('status',serverToken)
+    };
+    
+    return( 
+    <StatusContext.Provider value={storeTokenInLs}>
+        {children}
+    </StatusContext.Provider>
+    );
+};
+
+export const useStatus = () => {
+    const authContextValue= useContext(StatusContext);
     if(!authContextValue)
     {
         throw new Error("useAuth used outside of the provider");

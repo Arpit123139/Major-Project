@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Alert } from "react-bootstrap";
 import BackgroundImage from '../assets/img/signin.png'
-import "./login.css";
+import "../css/login.css";
 import axios from 'axios';
 import { useAuth } from '../Auth/Auth';
 
@@ -79,7 +79,7 @@ const Signup = () => {
           body { background: linear-gradient(#141e30, #243b55); }
         `}</style>
       </Helmet> */}
-      <form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
+      <form className="shadow p-4 bg-white rounded">
         <div className="h4 mb-2 text-center">Sign Up</div>
         <div className="mb-1">
           <Form.Label>Username</Form.Label>
@@ -151,9 +151,7 @@ const Signup = () => {
           <label htmlFor="url" >pic</label>
           <input type="file" onChange={(e) => setImage(e.target.files[0])}></input>
         </div>
-        <button type="submit" className="w-100" variant="primary" style={{ backgroundColor: 'blue', color: 'white' }}>
-          Sign Up
-        </button>
+        <button type="submit" onClick={handleSubmit} class="w-100 btn-primary">Sign Up</button>
       </form>
     </div>
   );

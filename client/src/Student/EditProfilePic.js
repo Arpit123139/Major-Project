@@ -1,3 +1,5 @@
+import BackgroundImage from '../assets/img/signin.png'
+import "../css/login.css";
 import React, { useState } from 'react'
 import {  useNavigate } from 'react-router-dom'
 
@@ -57,16 +59,15 @@ const EditImage = () => {
 
 
   return (
-    <div className="container">
-        <h1>edit profile</h1>
-            <form className="mt-4">
-                <div className="row">
+    <div className="sign-in__wrapper"
+    style={{ backgroundImage: `url(${BackgroundImage})` }}>
+            <form className="shadow p-4 bg-white rounded">
+            <div className="h4 mb-2 text-center">Change Image</div>
                     <div class="mb-3 col-lg-6 col-md-6 col-12">
-                        <label for="exampleInputEmail1" class="form-label">pic</label>
+                        <label for="exampleInputEmail1" class="form-label">Select Image</label>
                         <input type="file" onChange={(e) => setImage(e.target.files[0])}></input>                   
                     </div>
                     <button type="submit" onClick={updateProfilePic} class="btn btn-primary">Submit</button>
-                </div>
             </form>
         </div>
   )

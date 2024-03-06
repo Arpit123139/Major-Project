@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from "react";
+import Navbar from "../Logins/Navbar"
 import Issue from "../assets/img/Issue.jpg";
 import Room1 from "../assets/img/Room1.png";
 import Room2 from "../assets/img/Room2.png";
@@ -103,6 +104,8 @@ const EditStudentComplaint = () => {
     }, []);
 
     return (
+        <>
+        <Navbar />
         <div style={containerStyle}>
             <div style={leftHalfStyle}>
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "100px" }}>
@@ -168,6 +171,7 @@ const EditStudentComplaint = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from "react";
+import Navbar from "../Logins/Navbar"
 import Rating from "@mui/material/Rating";
 import Box from '@mui/material/Box';
 import { FaStar } from 'react-icons/fa';
@@ -126,6 +127,8 @@ function FeedbackPage() {
 }, []);
 
   return (
+    <>
+    <Navbar />
     <div style={containerStyle}>
       <div style={leftHalfStyle}>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "20px" }}>
@@ -207,6 +210,7 @@ function FeedbackPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

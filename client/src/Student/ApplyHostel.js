@@ -1,6 +1,8 @@
+import BackgroundImage from '../assets/img/signin.png'
+import "../css/login.css"
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { Form, Button, Alert } from "react-bootstrap";
 
 const ApplyHostel = () => {
     const navigate = useNavigate();
@@ -57,11 +59,13 @@ const ApplyHostel = () => {
     };
 
     return (
-        <div className="signup-container">
-            <h2>Apply for hostel</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="input-group">
+        <div className="sign-in__wrapper"
+        style={{ backgroundImage: `url(${BackgroundImage})` }}>
+            <form className="shadow p-4 bg-white rounded" onSubmit={handleSubmit}>
+            <div className="h4 mb-2 text-center">Apply Hostel</div>
+                <div className="mb-1">
                     <label htmlFor="hostelName">Hostel Name</label>
+                    <br></br>
                     <select
                         id="hostelName"
                         name="hostelName"
@@ -74,8 +78,9 @@ const ApplyHostel = () => {
                     </select>
                 </div>
                 {formData.hostelName && (
-                    <div className="input-group">
+                    <div className="mb-1">
                         <label htmlFor="block">Block</label>
+                        <br></br>
                         <select
                             id="block"
                             name="block"
@@ -98,9 +103,9 @@ const ApplyHostel = () => {
                         </select>
                     </div>
                 )}
-                <div className="input-group">
+                <div className="mb-1">
                     <label htmlFor="roomNo">Room Number</label>
-                    <input
+                    <Form.Control
                         id="roomNo"
                         name="roomNo"
                         type="text"

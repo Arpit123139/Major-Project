@@ -4,7 +4,7 @@ import axios from 'axios'; // Import Axios
 import { useAuth } from '../Auth/Auth';
 import { Form, Button, Alert } from "react-bootstrap";
 import BackgroundImage from '../assets/img/signin.png'
-import "./login.css";
+import "../css/login.css";
 
 const Signin = () => {
   const history = useNavigate("");
@@ -88,9 +88,7 @@ const Signin = () => {
               
             </select>
           </div> */}
-          <button className="w-100 mb-2" type="submit" onClick={addinpdata}>
-            Submit
-          </button>
+          <button type="submit" onClick={addinpdata} class="w-100 btn-primary">Sign In</button>
         </form>
       </div>
     </div>
