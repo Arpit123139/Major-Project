@@ -18,7 +18,6 @@ const EditStudentProfile = () => {
         email: "",
         collegeid: "",
         phone: "",
-        semester: ""
     })
 
     const setdata = (e) => {
@@ -41,7 +40,7 @@ const EditStudentProfile = () => {
 
     const getdata = async () => {
 
-        const res = await fetch(`/api/v1/studentProfile`, {
+        const res = await fetch(`/api/v1/adminprofile`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -70,16 +69,16 @@ const EditStudentProfile = () => {
     const updateProfile = async (e) => {
         e.preventDefault();
 
-        const { name, email, collegeid, phone, semester } = inpval;
+        const { name, email, collegeid, phone } = inpval;
 
-        const res2 = await fetch(`/api/v1/editStudentProfile`, {
+        const res2 = await fetch(`/api/v1/editAdminProfile`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify({
-                name, email, collegeid, phone, semester
+                name, email, collegeid, phone
             })
         });
 
@@ -90,7 +89,7 @@ const EditStudentProfile = () => {
             alert("fill the data");
         } else {
             alert("data updated");
-            navigate('/uhomepage');
+            navigate('/ahomepage');
         }
     }
 
@@ -110,16 +109,12 @@ const EditStudentProfile = () => {
                     <Form.Control type="email" value={inpval.email} onChange={setdata} name="email" class="form-control" id="exampleInputPassword1" />
                 </div>
                 <div class="mb-1">
-                    <label for="exampleInputPassword1" class="form-label">collegeid</label>
+                    <label for="exampleInputPassword1" class="form-label">Emplyee</label>
                     <Form.Control type="text" value={inpval.collegeid} onChange={setdata} name="collegeid" class="form-control" id="exampleInputPassword1" />
                 </div>
                 <div class="mb-1">
                     <label for="exampleInputPassword1" class="form-label">Phone</label>
                     <Form.Control type="text" value={inpval.phone} onChange={setdata} name="phone" class="form-control" id="exampleInputPassword1" />
-                </div>
-                <div class="mb-1">
-                    <label for="exampleInputPassword1" class="form-label">semester</label>
-                    <Form.Control type="text" value={inpval.semester} onChange={setdata} name="semester" class="form-control" id="exampleInputPassword1" />
                 </div>
 
                 <button type="submit" onClick={updateProfile} class="w-100 btn-primary">Submit</button>

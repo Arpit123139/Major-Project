@@ -11,7 +11,8 @@ const Signin = () => {
 
   const [inpval, setINP] = useState({
     email: "",
-    password: ""
+    password: "",
+    type:"student"
   });
 
   const storeTokenInLS = useAuth();
@@ -26,35 +27,50 @@ const Signin = () => {
       }
     });
   }
-  // const handleUserTypeChange = (event) => {
-  //   setINP((prevData) => ({ ...prevData, type: event.target.value }));
-  // };
+  const handleUserTypeChange = (event) => {
+    setINP((prevData) => ({ ...prevData, type: event.target.value }));
+  };
 
   const addinpdata = async (e) => {
     e.preventDefault();
     console.log(inpval)
-    const { email, password } = inpval;
+    const { email, password,type } = inpval;
+    console.log(type)
     try {
-      const response = await axios.post('/api/v1/signin', {
-        email,
-        password,
-      })
-      if (response.status === 200) {
-  // ------------ get the token from the local storage  
-  //       const storeTokenInLs = useAuth();
-  // // Function to retrieve token from localStorage
-  // const getToken = () => {
-  //   return localStorage.getItem('token');
-  // }
-  // const retrievedToken = getToken();
 
-        storeTokenInLS(response.data.token);
-        alert("Signin successful!");
-        console.log("data added");
-        history(`/homepage`);
-      } else {
-        console.error("-Error:", response.statusText);
-        alert("Signin failed. Please check your credentials.");
+
+      if(type==="student")
+      {
+        console.log("asdakjsndkjas")
+        const response = await axios.post('/api/v1/usignin', {
+          email,
+          password,
+        })
+        if (response.status === 200) {
+          storeTokenInLS(response.data.token);
+          alert("Signin successful!");
+          console.log("data added");
+          history(`/uhomepage`);
+        } else {
+          console.error("-Error:", response.statusText);
+          alert("Signin failed. Please check your credentials.");
+        }
+      }
+      else
+      {
+        const response = await axios.post('/api/v1/asignin', {
+          email,
+          password,
+        })
+        if (response.status === 200) {
+          storeTokenInLS(response.data.token);
+          alert("Signin successful!");
+          console.log("data added");
+          history(`/ahomepage`);
+        } else {
+          console.error("-Error:", response.statusText);
+          alert("Signin failed. Please check your credentials.");
+        }
       }
     } catch (error) {
       console.error("---Error:", error);
@@ -80,14 +96,15 @@ const Signin = () => {
           <Form.Control type="password" value={inpval.password} onChange={setdata} name="password" required="" />
           </div>
           <br />
-          {/* <div className="input-group">
+           <div className="mb-1">
             <label htmlFor="type">User Type</label>
+            <br></br>
             <select id="type" name="type" value={inpval.type} onChange={handleUserTypeChange}>
               <option value="student">Student</option>
-              <option value="teacher">Admin</option>
+              <option value="admin">Admin</option>
               
             </select>
-          </div> */}
+          </div>
           <button type="submit" onClick={addinpdata} class="w-100 btn-primary">Sign In</button>
         </form>
       </div>

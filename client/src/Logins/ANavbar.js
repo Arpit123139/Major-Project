@@ -19,11 +19,10 @@ export default function Landing() {
                 </div>
 
                 <div class="nav-links">
-                    <a href="http://localhost:3000/uhomepage">HomePage</a>
-                    <a href="http://localhost:3000/feedback">Give FeedBack</a>
-                    <a href="http://localhost:3000/printFeedbackData">Yours FeedBack</a>
-                    <a href="http://localhost:3000/roomcomplaint">Room Issues</a>
-                    <a href="http://localhost:3000/printRoomComplaints">Your Room Issues</a>
+                    <a href="http://localhost:3000/ahomepage">HomePage</a>
+                    <a href="http://localhost:3000/getallStudents">Hostel Status</a>
+                    <a href="http://localhost:3000/getStudentFeedback">FeedBacks</a>
+                    <a href="http://localhost:3000/getstudentroomissues">Room Issues</a>
                     <a href="http://localhost:3000/">Logout</a>
                 </div>
             </div>

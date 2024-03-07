@@ -71,7 +71,7 @@ const EditStudentComplaint = () => {
             console.log("Error submitting feedback");
         } else {
             console.log("Feedback submitted successfully:", data);
-            navigate('/homepage');
+            navigate('/uhomepage');
             // Optionally, you can handle success actions here
         }
     };

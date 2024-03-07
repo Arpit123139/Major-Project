@@ -34,7 +34,7 @@ const EditImage = () => {
         console.log(url1) 
         //const pus=url1.toString()
         console.log("asdasjbaskjbkjasbfakjs")
-        const res2 = await fetch(`/api/v1/editImage`,{
+        const res2 = await fetch(`/api/v1/aeditImage`,{
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -53,7 +53,7 @@ const EditImage = () => {
             alert("fill the data");
         }else{
             alert("data updated");
-            navigate('/uhomepage');
+            navigate('/ahomepage');
         }
     }
 

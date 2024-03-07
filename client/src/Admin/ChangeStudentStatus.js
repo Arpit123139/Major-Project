@@ -18,7 +18,8 @@ const EditStudentProfile = () => {
         email: "",
         collegeid: "",
         phone: "",
-        semester: ""
+        semester: "",
+        status: ""
     })
 
     const setdata = (e) => {
@@ -32,20 +33,16 @@ const EditStudentProfile = () => {
         })
     }
 
-    const getToken = () => {
-        return localStorage.getItem('token');
-    }
-    const token = getToken();
-    console.log(token);
+
+    const id = localStorage.getItem('id');
 
 
     const getdata = async () => {
 
-        const res = await fetch(`/api/v1/studentProfile`, {
+        const res = await fetch(`/api/v1/astudentProfile/${id}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
             }
         });
 
@@ -67,19 +64,20 @@ const EditStudentProfile = () => {
     }, []);
 
 
+
+
     const updateProfile = async (e) => {
         e.preventDefault();
 
-        const { name, email, collegeid, phone, semester } = inpval;
+        const { name, email, collegeid, phone, semester, status } = inpval;
 
-        const res2 = await fetch(`/api/v1/editStudentProfile`, {
+        const res2 = await fetch(`/api/v1/aeditstudentprofile/${id}`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify({
-                name, email, collegeid, phone, semester
+                name, email, collegeid, phone, semester, status
             })
         });
 
@@ -90,7 +88,7 @@ const EditStudentProfile = () => {
             alert("fill the data");
         } else {
             alert("data updated");
-            navigate('/uhomepage');
+            navigate('/ahomepage');
         }
     }
 
@@ -121,7 +119,14 @@ const EditStudentProfile = () => {
                     <label for="exampleInputPassword1" class="form-label">semester</label>
                     <Form.Control type="text" value={inpval.semester} onChange={setdata} name="semester" class="form-control" id="exampleInputPassword1" />
                 </div>
-
+                <div className="mb-1">
+                    <label htmlFor="status" className="form-label">Status</label>
+                    <select id="status" name="status" value={inpval.status} onChange={setdata} className="form-control">
+                        <option value="Pending">Pending</option>
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
                 <button type="submit" onClick={updateProfile} class="w-100 btn-primary">Submit</button>
             </form>
         </div>

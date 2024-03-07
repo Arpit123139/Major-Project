@@ -45,7 +45,7 @@ const ApplyHostel = () => {
             console.log(response);
             if (response.status === 200) { // Assuming 201 (Created) for successful signup
                 alert(`Registered successfully!`);
-                navigate('/homepage'); // Use appropriate redirect logic
+                navigate('/uhomepage'); // Use appropriate redirect logic
             } else {
                 // Handle other status codes appropriately
                 // Consider using more granular error handling
