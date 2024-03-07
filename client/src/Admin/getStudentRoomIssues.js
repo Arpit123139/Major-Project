@@ -60,7 +60,7 @@ const PrintRoomComplaints = () => {
                 <div>
                     <div class="card shadow-sm">
                         <div class="card-header bg-transparent border-0">
-                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Student Feedbacks</h3>
+                            <h3 class="mb-0"><i class="far fa-clone pr-1"></i>Student Room Issues</h3>
                         </div>
                         <div class="card-body pt-0">
                             <table class="table table-bordered">

@@ -9,7 +9,7 @@ const axios = require('axios')
 
 const HomePage = () => {
 
-    const statusStd=localStorage.getItem("status")
+    const statusStd = localStorage.getItem("status")
     const [getuserdata, setStudentDetail] = useState({});
     console.log("dsdsds ", getuserdata);
     const getToken = () => {
@@ -50,16 +50,22 @@ const HomePage = () => {
 
     return (
         <>
-        {/* {backgroundColor:"#34A2BD"} */}
-        {statusStd === "Active" ? (
-                                                <>
-                                                    <Navbar />
-                                                </>
-                                            ) : (
-                                                <>
-                                                </>
-                                            )}
-            <div class="student-profile py-4" style={{backgroundImage: `url(${backgroundImage})`}} >
+            {/* {backgroundColor:"#34A2BD"} */}
+            {statusStd === "Active" ? (
+                <>
+                    <Navbar />
+                </>
+            ) : (
+                <>
+                </>
+            )}
+            <div class="student-profile py-4" style={{
+                backgroundImage: `url(${backgroundImage})`,
+                position: 'fixed',
+                width: '100%',
+                height: '100%',
+                backgroundSize: 'cover'
+            }} >
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4">
@@ -104,7 +110,7 @@ const HomePage = () => {
                         </div>
 
 
-                        
+
                         <div class="col-lg-8">
 
                             <div class="card shadow-sm">
@@ -144,13 +150,13 @@ const HomePage = () => {
                                                 </>
                                             ) : (
                                                 <>
-                                                <th width="30%">Apply for hostel</th>
+                                                    <th width="30%">Apply for hostel</th>
                                                     <td width="2%">:</td>
                                                     <td>
-                                                <div className="add_btn" align="center">
-                                                    <NavLink to={`/applyHostel`}> <button className="btn btn-primary" >Apply for hostel</button></NavLink>
-                                                </div>
-                                                </td>
+                                                        <div className="add_btn" align="center">
+                                                            <NavLink to={`/applyHostel`}> <button className="btn btn-primary" >Apply for hostel</button></NavLink>
+                                                        </div>
+                                                    </td>
                                                 </>
                                             )}
                                         </tr>
